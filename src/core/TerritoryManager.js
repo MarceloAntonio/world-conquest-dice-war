@@ -17,6 +17,8 @@ export class TerritoryManager {
   territories(id){return this.countries.filter(c=>this.owners[c.id]===id).map(c=>c.id);}
   route(a,b,mode='global'){
     const matches=e=>this.owners[e.a]===a&&this.owners[e.b]===b||this.owners[e.b]===a&&this.owners[e.a]===b;
-    return this.borders.land.some(matches)?'land':mode==='global'&&this.borders.sea.some(matches)?'sea':null;
+    if(this.borders.land.some(matches))return 'land';
+    const link=mode==='global'?this.borders.sea.find(matches):null;
+    return link?(link.regional?'regional':'sea'):null;
   }
 }
