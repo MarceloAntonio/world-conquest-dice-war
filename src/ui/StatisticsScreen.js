@@ -3,13 +3,18 @@ import {leaderboard} from './Leaderboard.js';
 export function statisticsScreen(engine,byId){
   const all=Object.values(engine.factions),wins=[...all].sort((a,b)=>b.wins-a.wins)[0],streak=[...all].sort((a,b)=>b.maxStreak-a.maxStreak)[0];
   const area=engine.ranking.map(f=>({...f,area:engine.territory.territories(f.id).reduce((s,id)=>s+byId[id].areaKm2,0)})).sort((a,b)=>b.area-a.area)[0];
-  const counts=Object.fromEntries(engine.countries.map(c=>[c.id,1]));let expansion={id:engine.countries[0].id,count:1};
-  for(const b of engine.history){counts[b.winner]+=counts[b.loser];counts[b.loser]=0;if(counts[b.winner]>expansion.count)expansion={id:b.winner,count:counts[b.winner]};}
+  let expansion={id:engine.countries[0].id,count:1};
+  const activeValues=[];
+  for(let round=0;round<=engine.round;round++){
+    const owners=engine.ownersAt(round),counts={};for(const owner of Object.values(owners))counts[owner]=(counts[owner]??0)+1;
+    activeValues.push(Object.keys(counts).length);
+    for(const [id,count] of Object.entries(counts))if(count>expansion.count)expansion={id,count};
+  }
   return `<div class="stats-cards"><div><span>Batalhas realizadas</span><strong>${engine.round}</strong></div><div><span>Mais vitórias</span><strong>${esc(byId[wins.id].name)}</strong><small>${wins.wins} vitórias</small></div><div><span>Maior sequência</span><strong>${streak.maxStreak}</strong><small>${esc(byId[streak.id].name)}</small></div><div><span>Maior área atual</span><strong>${compact(area.area)} km²</strong><small>${esc(byId[area.id].name)}</small></div><div><span>Maior expansão histórica</span><strong>${expansion.count} Estados</strong><small>${esc(byId[expansion.id].name)}</small></div><div><span>População total da base</span><strong>${compact(engine.population.world)}</strong><small>${engine.active.length} facções sobreviventes</small></div></div>
-    <div class="chart-title"><h3>Estados independentes por rodada</h3><span>ESTADOS INDEPENDENTES</span></div>${lineChart([{name:'Estados independentes',color:'#84AEDB',values:Array.from({length:engine.round+1},(_,i)=>195-i)}],195)}
+    <div class="chart-title"><h3>Estados independentes por rodada</h3><span>ESTADOS INDEPENDENTES</span></div>${lineChart([{name:'Estados independentes',color:'#84AEDB',values:activeValues}],engine.countries.length)}
     <div class="chart-title"><h3>Crescimento populacional</h3><select id="growth-country" aria-label="País no gráfico"><option value="top5">Top 5 atuais</option>${engine.countries.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></div><div id="growth-chart">${growthChart(engine,'top5',byId)}</div>
-    <div class="stats-actions"><button class="button primary" data-action="replay-map">Explorar mapa por rodada</button><button class="button" data-action="export">Exportar partida JSON</button></div><h3>Primeiros Estados eliminados</h3><div class="elimination-list">${engine.history.slice(0,8).map(b=>`<button data-battle="${b.round}"><span>#${b.round}</span>${flag(byId[b.loser])}${esc(byId[b.loser].name)}<small>por ${esc(byId[b.winner].name)}</small></button>`).join('')||'<p>Aguardando a primeira batalha.</p>'}</div>
-    <h3>Ranking atual</h3><div class="statistics-ranking">${leaderboard(engine,byId)}</div><p class="source-line">População e área são medidas distintas. A classificação de área usa a geometria Natural Earth; o ranking principal usa a população da base.</p>`;
+    <div class="stats-actions"><button class="button primary" data-action="replay-map">Explorar mapa por rodada</button><button class="button" data-action="export">Exportar partida JSON</button></div><h3>Primeiras eliminações</h3><div class="elimination-list">${engine.history.filter(b=>b.eliminated!==false).slice(0,8).map(b=>`<button data-battle="${b.round}"><span>#${b.round}</span>${flag(byId[b.loser])}${esc(byId[b.loser].name)}<small>por ${esc(byId[b.winner].name)}</small></button>`).join('')||'<p>Aguardando a primeira batalha.</p>'}</div>
+    <h3>Ranking atual</h3><div class="statistics-ranking">${leaderboard(engine,byId)}</div><p class="source-line">População e área são medidas distintas. A área vem da geometria Natural Earth; o ranking segue a regra de força da campanha.</p>`;
 }
 export function growthChart(engine,id,byId){
   const colors=['#84AEDB','#CCE5FF','#4374A8','#a3c9ee','#5f94c7'];

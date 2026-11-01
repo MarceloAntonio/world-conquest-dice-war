@@ -116,6 +116,7 @@ export class WorldMap {
     this.raycaster.setFromCamera(this.pointer,this.camera);return this.raycaster.intersectObjects(this.hitTargets,false)[0]?.object.userData.id??null;
   }
   highlight(id){
+    if(id&&this.participants&&!this.participants.has(id))id=null;
     if(this.hover===id)return;
     if(this.hover){const old=this.meshes.get(this.hover);if(old){old.line.material.color.setHex(0x1f4575);old.line.material.opacity=0;old.line.position.z=0;old.mesh.material.color.setHex(0xc4d3df);}}
     this.hover=id;
@@ -137,15 +138,21 @@ export class WorldMap {
     else this.focus([attacker,defender]);
   }
   update(owners,animate=false,conquered=[]){
-    if(!animate){this.effects=[];for(const m of this.meshes.values()){m.uniforms.conquestProgress.value=1;m.mesh.position.z=1.8;m.mesh.material.color.setHex(0xc4d3df);m.line.material.opacity=0;}}
+    if(!animate){this.effects=[];for(const [id,m] of this.meshes){m.uniforms.conquestProgress.value=1;m.mesh.position.z=1.8;m.mesh.material.color.setHex(this.participants&&!this.participants.has(id)?0x4374A8:0xc4d3df);m.line.material.opacity=0;}}
     for(const [id,m] of this.meshes){
+      if(this.participants&&!this.participants.has(id))continue;
       const owner=owners[id];if(m.owner===owner)continue;
+      if(!owner)continue;
       m.uniforms.previousMap.value=m.mesh.material.map;m.uniforms.conquestProgress.value=animate?0:1;
       m.owner=owner;m.mesh.material.map=this.textures.get(owner);m.mesh.material.needsUpdate=true;
       if(animate&&conquered.includes(id))this.effects.push({id,start:performance.now()});
     }
-    for(const boundary of this.boundaries)boundary.line.visible=!boundary.b||owners[boundary.a]!==owners[boundary.b];
+    for(const boundary of this.boundaries){boundary.line.visible=!boundary.b||owners[boundary.a]!==owners[boundary.b];boundary.line.material.opacity=this.participants&&!this.participants.has(boundary.a)&&(!boundary.b||!this.participants.has(boundary.b)) ? .13 : .85;}
     if(animate&&this.settings.quality!=='low')this.emitParticles(conquered);
+  }
+  setParticipants(ids){
+    this.participants=new Set(ids);this.endSelection();this.highlight(null);
+    for(const [id,m] of this.meshes){const active=this.participants.has(id);m.mesh.material.transparent=!active;m.mesh.material.opacity=active?1:.15;m.mesh.material.color.setHex(active?0xc4d3df:0x4374A8);if(!active){m.owner=id;m.mesh.material.map=this.textures.get(id);}m.side.visible=active;if(m.marker)m.marker.visible=active;}
   }
   emitParticles(ids){
     const origins=[],velocity=[];
