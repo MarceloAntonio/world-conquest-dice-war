@@ -1,6 +1,6 @@
 {
   "name": "world-conquest-dice-war",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,6 +9,7 @@
     "preview": "vite preview --host 0.0.0.0",
     "data:prepare": "node scripts/prepareData.js",
     "data:validate": "node scripts/validateData.js",
+    "data:military": "node scripts/prepareMilitary.js",
     "test": "node --test tests/*.test.js",
     "check": "npm run data:validate && npm test && npm run build"
   },

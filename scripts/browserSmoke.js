@@ -1,5 +1,6 @@
 import {chromium} from '@playwright/test';
 import fs from 'node:fs/promises';
+import {manualBattles,continueBattles} from './browserHelpers.js';
 const url=process.env.GAME_URL||'http://127.0.0.1:5173';
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});
 const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
@@ -15,7 +16,7 @@ try{
   await page.locator('[name="animations"]').uncheck();
   await page.getByRole('button',{name:'Salvar configurações'}).click();
   await page.locator('#speed').selectOption('max');
-  await page.locator('[data-action="batch"]').click();
+  await manualBattles(page,10);
   await page.waitForFunction(()=>window.__game.engine.round===10&&!window.__game.engine.running);
   const firstTen=await page.evaluate(()=>JSON.stringify(window.__game.engine.history));
   assert(await page.evaluate(()=>window.__game.engine.active.length)===185,'10 eliminations');
@@ -24,7 +25,7 @@ try{
   await page.locator('#continue-menu').click();
   assert(await page.evaluate(()=>window.__game.engine.round)===10,'reload and continue');
   await page.getByRole('button',{name:'Reiniciar com a mesma seed'}).click();
-  await page.locator('#speed').selectOption('max');await page.locator('[data-action="batch"]').click();
+  await page.locator('#speed').selectOption('max');await manualBattles(page,10);
   await page.waitForFunction(()=>window.__game.engine.round===10&&!window.__game.engine.running);
   assert(await page.evaluate(()=>JSON.stringify(window.__game.engine.history))===firstTen,'same seed after reset');
   await page.getByRole('button',{name:'Estatísticas',exact:true}).first().click();
@@ -35,7 +36,7 @@ try{
   await page.locator('#country-search').fill('Santa Sé (Vaticano)');await page.locator('#country-search').dispatchEvent('change');
   assert(await page.locator('#dialog-content').innerText().then(t=>t.includes('882')),'Vatican selectable and source population');
   await page.getByRole('button',{name:'Fechar',exact:true}).click();
-  await page.locator('#batch').selectOption('all');await page.locator('[data-action="batch"]').click();
+  await continueBattles(page);
   await page.waitForFunction(()=>window.__game.engine.phase==='finished');
   await page.waitForSelector('.victory');
   assert(await page.evaluate(()=>window.__game.engine.round)===194,'global finish after 194 battles');
@@ -44,7 +45,7 @@ try{
   await page.getByRole('button',{name:'Nova simulação',exact:true}).last().click();
   await page.getByRole('button',{name:'Configurações',exact:true}).first().click();
   await page.locator('[name="mode"]').selectOption('land');await page.getByRole('button',{name:'Salvar configurações'}).click();
-  await page.locator('#batch').selectOption('all');await page.locator('[data-action="batch"]').click();
+  await continueBattles(page);
   await page.waitForFunction(()=>window.__game.engine.phase==='stalemate');
   assert(await page.locator('#dialog-content').innerText().then(t=>t.includes('GEOGRÁFICO')),'land stalemate screen');
   await page.getByRole('button',{name:'Fechar',exact:true}).click();
@@ -54,6 +55,6 @@ try{
   await page.screenshot({path:'test-results/game-mobile.png'});
   await page.locator('[data-action="next"]').click();await page.waitForFunction(()=>window.__game.engine.round===1&&!window.__game.busy);
   assert(errors.length===0,`Browser errors: ${errors.join('; ')}`);
-  console.log(JSON.stringify({url,renderedCountries:195,batch:true,reload:true,reproducible:true,replay:true,smallStates:true,globalVictory:true,landStalemate:true,mobile:true,errors},null,2));
+  console.log(JSON.stringify({url,renderedCountries:195,manual:true,continuous:true,reload:true,reproducible:true,replay:true,smallStates:true,globalVictory:true,landStalemate:true,mobile:true,errors},null,2));
 }catch(error){console.error('Browser failure:',error.message,'Browser errors:',errors);await page.screenshot({path:'test-results/failure.png'}).catch(()=>{});throw error;}
 finally{await browser.close();}

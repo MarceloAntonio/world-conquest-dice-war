@@ -92,4 +92,5 @@ await write('public/data/sources.json',sources);
 for(const c of countries)await fs.copyFile(path.join(root,`node_modules/flag-icons/flags/4x3/${c.id.toLowerCase()}.svg`),path.join(root,`public/${c.flag}`));
 await fs.copyFile(path.join(root,'node_modules/flag-icons/LICENSE'),path.join(root,'public/assets/flags/LICENSE.txt'));
 console.log(`Prepared ${countries.length} states, ${borders.land.length} land borders, ${sea.length} sea routes; ${sources.population.years.join('/')} population.`);
+await import('./prepareMilitary.js');
 await import('./validateData.js');

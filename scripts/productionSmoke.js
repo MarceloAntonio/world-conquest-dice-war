@@ -1,5 +1,6 @@
 import {chromium} from '@playwright/test';
 import fs from 'node:fs/promises';
+import {setPowerOptions,continueBattles} from './browserHelpers.js';
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});
 const page=await browser.newPage({viewport:{width:1440,height:1000}});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
@@ -7,6 +8,7 @@ const assert=(c,m)=>{if(!c)throw Error(m);};
 try{
   await page.goto(process.env.GAME_URL||'http://127.0.0.1:4173');
   await page.waitForSelector('#map-loading',{state:'detached',timeout:60000});
+  if(process.env.POWER_MODE)await setPowerOptions(page,process.env.POWER_MODE);
   await page.locator('#speed').selectOption('0.5');await page.locator('[data-action="next"]').click();
   await page.waitForFunction(()=>document.querySelectorAll('.die.rolling').length===6);
   await page.waitForFunction(()=>!document.getElementById('next-button').disabled);
@@ -19,9 +21,11 @@ try{
   await page.locator('#growth-country').selectOption('BR');
   assert(await page.locator('#growth-chart .chart-legend').innerText()==='Brasil','Interactive growth chart');
   await page.getByRole('button',{name:'Fechar',exact:true}).click();
-  await page.locator('#speed').selectOption('max');await page.locator('#batch').selectOption('all');await page.locator('[data-action="batch"]').click();
+  await page.locator('#speed').selectOption('max');await continueBattles(page);
   await page.waitForSelector('.victory',{timeout:60000});assert((await page.locator('#metric-round').innerText())==='194','194 decisive battles');
   const snapshot=await page.evaluate(()=>JSON.parse(localStorage.getItem('dice-war.save.v1')));
+  assert(snapshot.options.powerMode===(process.env.POWER_MODE||'population'),'Saved force mode');
+  if(snapshot.options.powerMode!=='population')assert(snapshot.history.every(b=>b.components&&b.powerMode===snapshot.options.powerMode),'Military battle audit saved');
   assert(new Set(Object.values(snapshot.owners)).size===1,'One final sovereign');
   assert(Object.values(snapshot.factions).reduce((s,f)=>s+f.population,0)===8177227025,'Real population conserved');
   await fs.mkdir('test-results',{recursive:true});await page.screenshot({path:'test-results/production-victory.png'});
@@ -30,5 +34,5 @@ try{
   const bounds=await page.locator('#map-canvas').boundingBox();assert(bounds.x>=0&&bounds.width<=390,'Full mobile world viewport');
   await page.screenshot({path:'test-results/production-mobile.png'});
   assert(errors.length===0,'No browser/shader errors: '+errors.join('; '));
-  console.log(JSON.stringify({production:true,animatedDice:6,battles:194,sovereigns:1,population:8177227025,errors},null,2));
+  console.log(JSON.stringify({production:true,powerMode:snapshot.options.powerMode,animatedDice:6,battles:194,sovereigns:1,population:8177227025,errors},null,2));
 }finally{await browser.close();}

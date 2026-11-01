@@ -12,6 +12,8 @@ export function validateData(countries,world,borders){
     if(!fs.existsSync(dir+c.flag))throw Error(`Missing flag ${c.id}`);
     if(!world.features.find(f=>f.properties.id===c.id)?.geometry.coordinates.length)throw Error(`Empty geometry ${c.id}`);
     if(geoArea(world.features.find(f=>f.properties.id===c.id))>2*Math.PI)throw Error(`Inverted spherical geometry ${c.id}`);
+    if(!c.military?.metrics)throw Error(`Missing military record (including explicit unknowns) ${c.id}`);
+    for(const m of Object.values(c.military.metrics))if(!Number.isFinite(m.value)||m.value<0||!m.year||!m.url?.startsWith('https://')||!m.definition)throw Error(`Invalid military observation ${c.id}`);
     for(const n of c.neighbors)if(!ids.has(n)||!countries.find(x=>x.id===n).neighbors.includes(c.id))throw Error(`Asymmetric border ${c.id}/${n}`);
   }
   const graph=Object.fromEntries([...ids].map(id=>[id,[]]));

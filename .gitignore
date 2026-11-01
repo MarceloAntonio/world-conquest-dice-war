@@ -4,3 +4,4 @@ test-results/
 playwright-report/
 .openai/.local/
 *.log
+scripts/raw/military/*.html

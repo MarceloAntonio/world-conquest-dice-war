@@ -1,0 +1,1007 @@
+{
+  "retrievedAt": "2026-11-01T19:31:54.837303+00:00",
+  "edition": 2026,
+  "countries": [
+    {
+      "id": "AF",
+      "slug": "afghanistan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=afghanistan",
+      "file": "afghanistan.html",
+      "sha256": "4bc2f3801977f131209bc5473930d345d86e7147160098fe3c7c243c52bf4aa9"
+    },
+    {
+      "id": "AL",
+      "slug": "albania",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=albania",
+      "file": "albania.html",
+      "sha256": "0d7ca2ea4975fb4b3972e8d8e5ac3dd59138eccd1cb821e33d61a00960082e57"
+    },
+    {
+      "id": "DZ",
+      "slug": "algeria",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=algeria",
+      "file": "algeria.html",
+      "sha256": "05cebff618d8a7e4795ee583b276b815af5cbe926464cbcab396e39b714b0541"
+    },
+    {
+      "id": "AO",
+      "slug": "angola",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=angola",
+      "file": "angola.html",
+      "sha256": "d88c17728742682af9786698d20e7d57ef6dee26cc3145e8e0596513a7d69024"
+    },
+    {
+      "id": "AR",
+      "slug": "argentina",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=argentina",
+      "file": "argentina.html",
+      "sha256": "c2a5831cecef35e559899600582470760054a81b75f0658ff2146e2caf0c4a00"
+    },
+    {
+      "id": "AM",
+      "slug": "armenia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=armenia",
+      "file": "armenia.html",
+      "sha256": "08bed63801d13b38cdb357b9e9e1591c4c784b7e0a0ac45d4b8e213567fe94e8"
+    },
+    {
+      "id": "AU",
+      "slug": "australia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=australia",
+      "file": "australia.html",
+      "sha256": "62417f5c6fbf6cf373f038d7232ec5a9013cf00e329b2563bfd56c3b6deeb98a"
+    },
+    {
+      "id": "AT",
+      "slug": "austria",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=austria",
+      "file": "austria.html",
+      "sha256": "2df8c6f1b48d93d9be6f2447d823d229322098c13aba6f4273fc5a39e7e23cac"
+    },
+    {
+      "id": "AZ",
+      "slug": "azerbaijan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=azerbaijan",
+      "file": "azerbaijan.html",
+      "sha256": "bda67d68242bd89c1558ed6c590d5d1adec294e38258afd77f616845e3f0c00c"
+    },
+    {
+      "id": "BH",
+      "slug": "bahrain",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=bahrain",
+      "file": "bahrain.html",
+      "sha256": "e5973b0b2994b6e98c4001f8765263e58f8861ad121f03fc5d54226f2c4c1c8e"
+    },
+    {
+      "id": "BD",
+      "slug": "bangladesh",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=bangladesh",
+      "file": "bangladesh.html",
+      "sha256": "be4b9cce967327f60a7ac894f2fb458abb57adb3cd2bfeb919346abdd3b64dc2"
+    },
+    {
+      "id": "BY",
+      "slug": "belarus",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=belarus",
+      "file": "belarus.html",
+      "sha256": "8f8e9b77c011c05937d2e09f020990b70ecbefe3b4eae9d1d7d3ba6d4715c634"
+    },
+    {
+      "id": "BE",
+      "slug": "belgium",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=belgium",
+      "file": "belgium.html",
+      "sha256": "f22893e33141f7ff555070d42d6ddf8ba6d6a24d105e67d8b614e7c9e319061f"
+    },
+    {
+      "id": "BZ",
+      "slug": "beliz",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=beliz",
+      "file": "beliz.html",
+      "sha256": "79ea659295bfc1201cfde35e285649dcf172a572fe49e441c30b01e31f48a3e8"
+    },
+    {
+      "id": "BJ",
+      "slug": "benin",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=benin",
+      "file": "benin.html",
+      "sha256": "4ff6b9c860c96b7df6ac8bd429ac088951d1bd19c33feb4e4c1ece7fa38dbb3f"
+    },
+    {
+      "id": "BT",
+      "slug": "bhutan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=bhutan",
+      "file": "bhutan.html",
+      "sha256": "f402874a98d5f76d0908904339bf09077bf269c8b3eb909d2384aaad62e0c69e"
+    },
+    {
+      "id": "BO",
+      "slug": "bolivia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=bolivia",
+      "file": "bolivia.html",
+      "sha256": "fb866f9c080d2a8d0b3a4ddfd2141bbcb0ac8711917d4ebdfe99c0be6efa3f71"
+    },
+    {
+      "id": "BA",
+      "slug": "bosnia-and-herzegovina",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=bosnia-and-herzegovina",
+      "file": "bosnia-and-herzegovina.html",
+      "sha256": "7fe9533e1f8b13de08b3be469fe9a77f3dd32a9d1180837f5a3a3c229322ed80"
+    },
+    {
+      "id": "BW",
+      "slug": "botswana",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=botswana",
+      "file": "botswana.html",
+      "sha256": "e87fd6ac4c228c37199057c8f850888dcb3a3eaecc1c8635c7fec386f1db1421"
+    },
+    {
+      "id": "BR",
+      "slug": "brazil",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=brazil",
+      "file": "brazil.html",
+      "sha256": "912b1ade072681dd46efd7940f41d641d30f5631b7b2c104c04a292507cfa6df"
+    },
+    {
+      "id": "BG",
+      "slug": "bulgaria",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=bulgaria",
+      "file": "bulgaria.html",
+      "sha256": "79af16acac662ec50b77f8ad08b48c678128f7a6090e379ce4cbbba7a448d660"
+    },
+    {
+      "id": "BF",
+      "slug": "burkina-faso",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=burkina-faso",
+      "file": "burkina-faso.html",
+      "sha256": "54eef5d74ebafe5489c2e4146cf2017aab55eef97fe7d64a2378328f25f9e5dc"
+    },
+    {
+      "id": "KH",
+      "slug": "cambodia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=cambodia",
+      "file": "cambodia.html",
+      "sha256": "dd8bb850005ba28aee4b587d4df1da3a53112c0835155f41b38c279b272b98a0"
+    },
+    {
+      "id": "CM",
+      "slug": "cameroon",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=cameroon",
+      "file": "cameroon.html",
+      "sha256": "6c784d13952ddf53706e9096d9e7e40f6130b473d8875726e4627a183c0d74b9"
+    },
+    {
+      "id": "CA",
+      "slug": "canada",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=canada",
+      "file": "canada.html",
+      "sha256": "2b1b1117cd54b947ae021078424a7bf864c09d20cc0c369c396a13be0dea5f61"
+    },
+    {
+      "id": "CF",
+      "slug": "central-african-republic",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=central-african-republic",
+      "file": "central-african-republic.html",
+      "sha256": "0761a233b38929c836529672cef0ee42ab9cc1ca81a19af7a81140124be6e05b"
+    },
+    {
+      "id": "TD",
+      "slug": "chad",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=chad",
+      "file": "chad.html",
+      "sha256": "979ce129b1ec7ab47e03779109041aa1e9fe07225a9f219f11571961d253b999"
+    },
+    {
+      "id": "CL",
+      "slug": "chile",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=chile",
+      "file": "chile.html",
+      "sha256": "aaeae0c3f110917ae3c54f5c3e6dbb8c145dd2d39f98787647b9a706636fadae"
+    },
+    {
+      "id": "CN",
+      "slug": "china",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=china",
+      "file": "china.html",
+      "sha256": "e5b62837ce4261029090c1095be268248a1f39d423b28a68b837cad15064555b"
+    },
+    {
+      "id": "CO",
+      "slug": "colombia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=colombia",
+      "file": "colombia.html",
+      "sha256": "b89093294f886d39ace7a15afa3409e29d3c3323ccea63d93672235e6bcf27d2"
+    },
+    {
+      "id": "HR",
+      "slug": "croatia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=croatia",
+      "file": "croatia.html",
+      "sha256": "440a5a76b8162ebf8c98dffda905395fab3c2fb9030d85107cbad1b3e50996d0"
+    },
+    {
+      "id": "CU",
+      "slug": "cuba",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=cuba",
+      "file": "cuba.html",
+      "sha256": "13dbff5c1bcc235f4b0bc819a57da0fd2f3260db53814b4916a6a424b042d736"
+    },
+    {
+      "id": "CZ",
+      "slug": "czech-republic",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=czech-republic",
+      "file": "czech-republic.html",
+      "sha256": "79adb013860d481cc4428226a20a1e8ecb4b042d37ee574a9a4f64cfbcdc108f"
+    },
+    {
+      "id": "CD",
+      "slug": "democratic-republic-of-the-congo",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=democratic-republic-of-the-congo",
+      "file": "democratic-republic-of-the-congo.html",
+      "sha256": "1edb9f5bd20b07eb4f2f9672e5da690c57b19ccfff3f55d71aa046ef8742d004"
+    },
+    {
+      "id": "DK",
+      "slug": "denmark",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=denmark",
+      "file": "denmark.html",
+      "sha256": "aa1f1daabef0221f58c0068fc51551c999d563d51a4761aeef4060742b11628e"
+    },
+    {
+      "id": "DO",
+      "slug": "dominican-republic",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=dominican-republic",
+      "file": "dominican-republic.html",
+      "sha256": "5dc3bceca9145963a0534732f30e30d6fb61f5135472873c666c3216f78a52d8"
+    },
+    {
+      "id": "EC",
+      "slug": "ecuador",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=ecuador",
+      "file": "ecuador.html",
+      "sha256": "4ad636ce162a0ef8162838a4a50dc5000efdea76780da17601fbe44fd6e17de7"
+    },
+    {
+      "id": "EG",
+      "slug": "egypt",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=egypt",
+      "file": "egypt.html",
+      "sha256": "b3d24d53d77bf059569959ba270a6233f0e3ec947d2339130f76a5be96c19771"
+    },
+    {
+      "id": "SV",
+      "slug": "el-salvador",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=el-salvador",
+      "file": "el-salvador.html",
+      "sha256": "8b365a16490a6a9a93d3ac039292bd5c57299bb93cd13e9c7b23cc7ef59f5eb2"
+    },
+    {
+      "id": "ER",
+      "slug": "eritrea",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=eritrea",
+      "file": "eritrea.html",
+      "sha256": "86f28ca89aca18e9166aabb9a2922e1906761254bc6ba3b013f807fec0311c68"
+    },
+    {
+      "id": "EE",
+      "slug": "estonia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=estonia",
+      "file": "estonia.html",
+      "sha256": "f9de371d1781c64be387283e1295df1f137822c089539862fcddf5d7008d5b1e"
+    },
+    {
+      "id": "ET",
+      "slug": "ethiopia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=ethiopia",
+      "file": "ethiopia.html",
+      "sha256": "2b8367f16ff3087192c1f27aba8d80951acc611519d5eb4aeac40cc09834cef2"
+    },
+    {
+      "id": "FI",
+      "slug": "finland",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=finland",
+      "file": "finland.html",
+      "sha256": "0d9a2a228177bb056d62b15e1a5a8ff6fd225cddf6227ff8362970b4660c8c64"
+    },
+    {
+      "id": "FR",
+      "slug": "france",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=france",
+      "file": "france.html",
+      "sha256": "df8bd9b7c27fb031b6a3dc5990401730024dd8942026a78f5b0a40114c9b084c"
+    },
+    {
+      "id": "GA",
+      "slug": "gabon",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=gabon",
+      "file": "gabon.html",
+      "sha256": "607ba666f39166d823bf26e9472a202aa0823eaa958eb442cb214bdde8199f19"
+    },
+    {
+      "id": "GE",
+      "slug": "georgia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=georgia",
+      "file": "georgia.html",
+      "sha256": "15d33ed3b2065f8a1605c2520c81dcaad21ab35be31d233536edd4cf993b76ef"
+    },
+    {
+      "id": "DE",
+      "slug": "germany",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=germany",
+      "file": "germany.html",
+      "sha256": "0e4bb951a1e57029e63e07b62207db4e14f95c0c74b3fa93eb77e83cf74a3f60"
+    },
+    {
+      "id": "GH",
+      "slug": "ghana",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=ghana",
+      "file": "ghana.html",
+      "sha256": "e661d38584ca96b7d6500f3dd6e722f8f12345aaa2234ba2c236f0c7fd983e24"
+    },
+    {
+      "id": "GR",
+      "slug": "greece",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=greece",
+      "file": "greece.html",
+      "sha256": "ab9971a7427e9ec95a4412e8376ae76f1beaec900da665a3759cfb7ce3fb6310"
+    },
+    {
+      "id": "GT",
+      "slug": "guatemala",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=guatemala",
+      "file": "guatemala.html",
+      "sha256": "3acd0d8a6a400eb2e7a4ecdca730066b2a9aba4d44378c30fc457aea2695549b"
+    },
+    {
+      "id": "HN",
+      "slug": "honduras",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=honduras",
+      "file": "honduras.html",
+      "sha256": "7775be4b7913df6ccc1172eb7458096f517561f1363a2325b9ebb4b71182a2f6"
+    },
+    {
+      "id": "HU",
+      "slug": "hungary",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=hungary",
+      "file": "hungary.html",
+      "sha256": "abdc1c7f090c3cdb7bd34e8bea1d5e01bf877471f728745e1203ae1ba9242613"
+    },
+    {
+      "id": "IS",
+      "slug": "iceland",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=iceland",
+      "file": "iceland.html",
+      "sha256": "05ac05776c2cd1c40e501915698a729c306685c8593f8d89028c2f41e7e595ae"
+    },
+    {
+      "id": "ID",
+      "slug": "indonesia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=indonesia",
+      "file": "indonesia.html",
+      "sha256": "4ab8022241b552c196f1bf7dda72e3709ae44c3fccf02f9616ff42811bb74b52"
+    },
+    {
+      "id": "IN",
+      "slug": "india",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=india",
+      "file": "india.html",
+      "sha256": "c279ffa81cce56f4ee1d16c5999a96f6844284d11e9e8665841c402a0afdd47a"
+    },
+    {
+      "id": "IR",
+      "slug": "iran",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=iran",
+      "file": "iran.html",
+      "sha256": "e6ce4dae7d83751c35a6ed11b222e9fef9ee9019799dd19d87ebc7af9e880a2b"
+    },
+    {
+      "id": "IQ",
+      "slug": "iraq",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=iraq",
+      "file": "iraq.html",
+      "sha256": "4302ae60aea6a303f91274997c54e3774fe367575f630bed100f749988b26eac"
+    },
+    {
+      "id": "IE",
+      "slug": "ireland",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=ireland",
+      "file": "ireland.html",
+      "sha256": "1c1676b2890c638508830809cfe5e3961b9b192bb2e0d7692dd463ae851b28b5"
+    },
+    {
+      "id": "IL",
+      "slug": "israel",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=israel",
+      "file": "israel.html",
+      "sha256": "837731bc4e558d91331dc8d9b6d418f8e68fa0e997ae272db1a21e577aea2dc6"
+    },
+    {
+      "id": "IT",
+      "slug": "italy",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=italy",
+      "file": "italy.html",
+      "sha256": "3eba9f5b4fcd7afd46eaa7aa02605fcdbc34ca69e86a6626e761c3a74f424d25"
+    },
+    {
+      "id": "CI",
+      "slug": "ivory-coast",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=ivory-coast",
+      "file": "ivory-coast.html",
+      "sha256": "9929a2fe35c2674eb414a0ea6a3b90a2cf9a20fc040dde311a96123b68243fa4"
+    },
+    {
+      "id": "JP",
+      "slug": "japan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=japan",
+      "file": "japan.html",
+      "sha256": "6009a7c78c5541bcb7382862ccb559d5c6af9410f2550b7c04d782b982e3e8b2"
+    },
+    {
+      "id": "JO",
+      "slug": "jordan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=jordan",
+      "file": "jordan.html",
+      "sha256": "d00607883f525c48a25ddd3ba0ccae999106a7a53fea886d9386b898bf247fb7"
+    },
+    {
+      "id": "KZ",
+      "slug": "kazakhstan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=kazakhstan",
+      "file": "kazakhstan.html",
+      "sha256": "266dabdf40854c78588b5491e2abfd1d20a1db3c456c732dc8bd7ab40f0c9835"
+    },
+    {
+      "id": "KE",
+      "slug": "kenya",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=kenya",
+      "file": "kenya.html",
+      "sha256": "ecca5e91b80f9727559639cc7260ca85c514bab0e8a772d0a54b31a52b33fbb8"
+    },
+    {
+      "id": "KW",
+      "slug": "kuwait",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=kuwait",
+      "file": "kuwait.html",
+      "sha256": "a098ce497af1f90de7dca1852b692202760dede5904519cc6dcb7a8df472c8c2"
+    },
+    {
+      "id": "KG",
+      "slug": "kyrgyzstan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=kyrgyzstan",
+      "file": "kyrgyzstan.html",
+      "sha256": "1e279846e8b0167b69f81512bb4d2d515b5818f898ba00258645145f754b50cb"
+    },
+    {
+      "id": "LA",
+      "slug": "laos",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=laos",
+      "file": "laos.html",
+      "sha256": "64b15e890690280181c72b561136dc588dba7d2cabbc04735cd12ed67f3a696a"
+    },
+    {
+      "id": "LV",
+      "slug": "latvia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=latvia",
+      "file": "latvia.html",
+      "sha256": "30c4f9e21eb61ec850bb8f4affa668d5ff015a3d44f9aa53422c3f3a33ad30d5"
+    },
+    {
+      "id": "LB",
+      "slug": "lebanon",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=lebanon",
+      "file": "lebanon.html",
+      "sha256": "e922f16f1d2fab38d55ed1a342b362cc5da37f3abdc1d2a267c3909ef00de0b8"
+    },
+    {
+      "id": "LR",
+      "slug": "liberia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=liberia",
+      "file": "liberia.html",
+      "sha256": "0a1a8bc83717b2e0ea426ad8fde7d39282d43c1439eb16a89da55858a4962d77"
+    },
+    {
+      "id": "LY",
+      "slug": "libya",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=libya",
+      "file": "libya.html",
+      "sha256": "9824682c60a98cac543faab1cfb915978d4a04c354d9e1d48629c8e4b4ebb0c7"
+    },
+    {
+      "id": "LS",
+      "slug": "lesotho",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=lesotho",
+      "file": "lesotho.html",
+      "sha256": "20445251700842b80ded296d0cced34a6274573304b83bd7e51c3ccea24b1ee5"
+    },
+    {
+      "id": "LU",
+      "slug": "luxembourg",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=luxembourg",
+      "file": "luxembourg.html",
+      "sha256": "5b5be7e5cebe3d56ced8f89d03c9a329e1d7680d01564f6e6b91ab053cf265fe"
+    },
+    {
+      "id": "MK",
+      "slug": "macedonia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=macedonia",
+      "file": "macedonia.html",
+      "sha256": "9c1777ce50ef760516f8b7cbe92d22ec2c8956c6721f3db7ec0d06a451f5c33e"
+    },
+    {
+      "id": "MG",
+      "slug": "madagascar",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=madagascar",
+      "file": "madagascar.html",
+      "sha256": "9654065a1b79d6e10908a14fb578bb4557790bbf83f928b21b57146b480b7fbc"
+    },
+    {
+      "id": "MY",
+      "slug": "malaysia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=malaysia",
+      "file": "malaysia.html",
+      "sha256": "e4f6bcef2d70c7087ac893e89e217310f870983e992cdea210b95138cf4f4953"
+    },
+    {
+      "id": "ML",
+      "slug": "mali",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=mali",
+      "file": "mali.html",
+      "sha256": "6f644b825587093dde628ff4726a4124f956ab789cb87f8a281fc541a9013583"
+    },
+    {
+      "id": "MR",
+      "slug": "mauritania",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=mauritania",
+      "file": "mauritania.html",
+      "sha256": "53a07c7f29cc31863178b241e0d5c546cf43786a85895ef2cc9d11e2b35f85bd"
+    },
+    {
+      "id": "MX",
+      "slug": "mexico",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=mexico",
+      "file": "mexico.html",
+      "sha256": "7b39889e5a2f4cb4507533c0ccf30c3ec1ca9781dc18095cf8d2d34b740ce368"
+    },
+    {
+      "id": "MN",
+      "slug": "mongolia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=mongolia",
+      "file": "mongolia.html",
+      "sha256": "a9a8d442870d86421476cd417c3099e9992752ae57feb2e2d70634a36f22c97f"
+    },
+    {
+      "id": "MD",
+      "slug": "moldova",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=moldova",
+      "file": "moldova.html",
+      "sha256": "0b9f513c4dea617258385aeb32c1fa7f6eaa63e869267ad7cba87fa298428afc"
+    },
+    {
+      "id": "ME",
+      "slug": "montenegro",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=montenegro",
+      "file": "montenegro.html",
+      "sha256": "74c6a328c538cda066e0e5807c725dfb8b8c8c461d8d38f652db9b2cc72e378f"
+    },
+    {
+      "id": "MA",
+      "slug": "morocco",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=morocco",
+      "file": "morocco.html",
+      "sha256": "b43638a3141ae18e55f36e05493c4adca805836679793f64c158dee0e439fba0"
+    },
+    {
+      "id": "MZ",
+      "slug": "mozambique",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=mozambique",
+      "file": "mozambique.html",
+      "sha256": "54021ddbcb3582ba508ae7f808ed66b0b11f006cab15123e55153a4f91524292"
+    },
+    {
+      "id": "MM",
+      "slug": "myanmar",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=myanmar",
+      "file": "myanmar.html",
+      "sha256": "af8192a2b0f58eaf44ad587eee1dc5cd233db233c2cb138486f5ebbb401c94b0"
+    },
+    {
+      "id": "NA",
+      "slug": "namibia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=namibia",
+      "file": "namibia.html",
+      "sha256": "fd8f931fb272fcca971406a7fd795d6dbe270239f3a7d3b82b2df6f2eb1d00ff"
+    },
+    {
+      "id": "NP",
+      "slug": "nepal",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=nepal",
+      "file": "nepal.html",
+      "sha256": "1faf2071c65c2391f3eb0e7db844f716c473300e7bfb34b6d741223123dcb9d1"
+    },
+    {
+      "id": "NL",
+      "slug": "netherlands",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=netherlands",
+      "file": "netherlands.html",
+      "sha256": "067fe4b4b41f93b218eb913d9b3a319b8aa01dd9e833b6d1800aa36d583c815b"
+    },
+    {
+      "id": "NZ",
+      "slug": "new-zealand",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=new-zealand",
+      "file": "new-zealand.html",
+      "sha256": "90eeea5a536f3eb51c6d1a3451128a96484c0828b4bb14d509935ef8a1655840"
+    },
+    {
+      "id": "NI",
+      "slug": "nicaragua",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=nicaragua",
+      "file": "nicaragua.html",
+      "sha256": "42adea471972af77e1d3ed2ff17e154647e3751ccf8f5d11541e9e0e7019fb4f"
+    },
+    {
+      "id": "NE",
+      "slug": "niger",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=niger",
+      "file": "niger.html",
+      "sha256": "d4fbc3a2dbee26230441ef2228d2d6935682b273a6ed3a9af196fdcfb2f99355"
+    },
+    {
+      "id": "NG",
+      "slug": "nigeria",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=nigeria",
+      "file": "nigeria.html",
+      "sha256": "cb07b96f7260f9031529d126b7f8482b0b5cbc77f211f02426105b05b97b2ed9"
+    },
+    {
+      "id": "KP",
+      "slug": "north-korea",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=north-korea",
+      "file": "north-korea.html",
+      "sha256": "3551aa7d937ba8568334615aa48da5ecf657fabf3e3f6c8230253c834a290ec0"
+    },
+    {
+      "id": "NO",
+      "slug": "norway",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=norway",
+      "file": "norway.html",
+      "sha256": "614838595af63e841a3fff1ed04b5b0f0b104174e638ecfee126658c68a4a63f"
+    },
+    {
+      "id": "OM",
+      "slug": "oman",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=oman",
+      "file": "oman.html",
+      "sha256": "bb2e51755b29f4c8e91678f2980e3fd0059aa1e938e8706a35ccc355c1e0e4fb"
+    },
+    {
+      "id": "PK",
+      "slug": "pakistan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=pakistan",
+      "file": "pakistan.html",
+      "sha256": "6758a3ade2718424a4eaca628d56f517e1039f9e27e8529b274142283d8119e4"
+    },
+    {
+      "id": "PA",
+      "slug": "panama",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=panama",
+      "file": "panama.html",
+      "sha256": "d80030f0b3be53a40ed01e7fc4435235aaeca111e18faed27312441a395bb2a3"
+    },
+    {
+      "id": "PY",
+      "slug": "paraguay",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=paraguay",
+      "file": "paraguay.html",
+      "sha256": "eefc65e6df1e3f03c1dad54f4b52fc8a7209d04523872fc04e6dabccc4357394"
+    },
+    {
+      "id": "PE",
+      "slug": "peru",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=peru",
+      "file": "peru.html",
+      "sha256": "5d5438ca33c872e204f19e6ba4cc372059f59d3a484383e85d6ea64b6afe5062"
+    },
+    {
+      "id": "PH",
+      "slug": "philippines",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=philippines",
+      "file": "philippines.html",
+      "sha256": "ebe5b7849d6e0da314112f0e5dfd4d8dbcd7ca856215aaa61bb3ee5a4277c395"
+    },
+    {
+      "id": "PL",
+      "slug": "poland",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=poland",
+      "file": "poland.html",
+      "sha256": "a449967f62c42db53f6aa0a33775ceb1f22ff675872eca94e16adaa4a42de43f"
+    },
+    {
+      "id": "PT",
+      "slug": "portugal",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=portugal",
+      "file": "portugal.html",
+      "sha256": "3bcc9576c6ff94df88389ae14c0a311477b87185f87825c63e25536c34c73b07"
+    },
+    {
+      "id": "QA",
+      "slug": "qatar",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=qatar",
+      "file": "qatar.html",
+      "sha256": "57176a8c351a2fb5909fb7eb29f0ba8de718872199acab0949673ff09b5ebf8d"
+    },
+    {
+      "id": "CG",
+      "slug": "republic-of-the-congo",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=republic-of-the-congo",
+      "file": "republic-of-the-congo.html",
+      "sha256": "d734966ffc52fffe7dff656a47131ae6238788e058121120c60b308779b6e184"
+    },
+    {
+      "id": "RO",
+      "slug": "romania",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=romania",
+      "file": "romania.html",
+      "sha256": "be51b4eafbc8ba413888d7d33627f95c83f466fd1dd2f95c9e27fb72267ac6a6"
+    },
+    {
+      "id": "RU",
+      "slug": "russia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=russia",
+      "file": "russia.html",
+      "sha256": "92d6367ad80aa6b47f21e185d39afaeeb52e5acac85c717d3a10e1a6967db981"
+    },
+    {
+      "id": "SA",
+      "slug": "saudi-arabia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=saudi-arabia",
+      "file": "saudi-arabia.html",
+      "sha256": "db8cf04c34344f9ebe6356f7df2c5fd3088a8e3e7663ed57df2efdf3d3a3ed3f"
+    },
+    {
+      "id": "SN",
+      "slug": "senegal",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=senegal",
+      "file": "senegal.html",
+      "sha256": "743661153f77f944cc79379a172a405df89274f0ee00d92fb1d2578b12c6e08d"
+    },
+    {
+      "id": "RS",
+      "slug": "serbia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=serbia",
+      "file": "serbia.html",
+      "sha256": "24965a047f83fb636cab55b5da85376d945965327af6f6069b083eb970dc23f9"
+    },
+    {
+      "id": "SL",
+      "slug": "sierra-leone",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=sierra-leone",
+      "file": "sierra-leone.html",
+      "sha256": "fc9e511bcae6c1b0b65cd2e5cdb8fb7f2289642745b39292a9f0e3139a2f4f5d"
+    },
+    {
+      "id": "SG",
+      "slug": "singapore",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=singapore",
+      "file": "singapore.html",
+      "sha256": "91299ed77cd8e1f1cd89d58e8eccf320bf2eb655efcf02a8cc081210556dd589"
+    },
+    {
+      "id": "SK",
+      "slug": "slovakia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=slovakia",
+      "file": "slovakia.html",
+      "sha256": "8a5c2bb89c0e7d4fc98f646903206e213a624425478b1ce44e6a261c17212108"
+    },
+    {
+      "id": "SI",
+      "slug": "slovenia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=slovenia",
+      "file": "slovenia.html",
+      "sha256": "eac38343daa0ec9e84de12f09d952e11735706db60aa8ed3949a1352d51334c2"
+    },
+    {
+      "id": "SO",
+      "slug": "somalia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=somalia",
+      "file": "somalia.html",
+      "sha256": "f2138e2eb66cf3e79c21950859f67ba7e6c8decc6aa5a86d5542f0f96f7c121b"
+    },
+    {
+      "id": "ZA",
+      "slug": "south-africa",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=south-africa",
+      "file": "south-africa.html",
+      "sha256": "9b714b603301c089df1ce210d140beb81745caae48f911ef7568d6b0ca240804"
+    },
+    {
+      "id": "KR",
+      "slug": "south-korea",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=south-korea",
+      "file": "south-korea.html",
+      "sha256": "7b2811902a3d7b2772ec7e9efce052c22be6da0b729e8d4be77001b3bce62529"
+    },
+    {
+      "id": "SS",
+      "slug": "south-sudan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=south-sudan",
+      "file": "south-sudan.html",
+      "sha256": "a9e877a1076ddb8c772eeb27f8a4f3244ec5fd6484eb37da9ddfe42db619031b"
+    },
+    {
+      "id": "ES",
+      "slug": "spain",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=spain",
+      "file": "spain.html",
+      "sha256": "8c9d5a4a9a514bc7edc8745b0c101fe3ae4695a2d78995ccbe38294cf1b2e702"
+    },
+    {
+      "id": "LK",
+      "slug": "sri-lanka",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=sri-lanka",
+      "file": "sri-lanka.html",
+      "sha256": "b1c23c01f6f01f24cec0376182bed77d09429f2c2409123fcd8d6d3af634c561"
+    },
+    {
+      "id": "SD",
+      "slug": "sudan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=sudan",
+      "file": "sudan.html",
+      "sha256": "dc1506aefeeb792249e29ec87de303cfe1d9f28f1fc2803e50764d40e8799be4"
+    },
+    {
+      "id": "SR",
+      "slug": "suriname",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=suriname",
+      "file": "suriname.html",
+      "sha256": "fea865e908619d448f389d362251d699c52a9505586bdd9e24bb6bf596092800"
+    },
+    {
+      "id": "SE",
+      "slug": "sweden",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=sweden",
+      "file": "sweden.html",
+      "sha256": "2d7ba4a48d653d7de33051812c37bf5c0933a77cc5d1c95c54d1665a45d6195b"
+    },
+    {
+      "id": "CH",
+      "slug": "switzerland",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=switzerland",
+      "file": "switzerland.html",
+      "sha256": "a7038dbfd44803c2a1290bebafdd0bd6cef87cf4c07cf406abf4c930edd07350"
+    },
+    {
+      "id": "SY",
+      "slug": "syria",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=syria",
+      "file": "syria.html",
+      "sha256": "99b7e259db3ac02b540a1048b58bd2326e5c1517e9ed7e547c9eae2a114d7129"
+    },
+    {
+      "id": "TJ",
+      "slug": "tajikistan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=tajikistan",
+      "file": "tajikistan.html",
+      "sha256": "be293a0d0610d5bc57c9128bd46aa5c4cf6372afaba2c4a46f52753ab18ac0d7"
+    },
+    {
+      "id": "TZ",
+      "slug": "tanzania",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=tanzania",
+      "file": "tanzania.html",
+      "sha256": "e53d8ad43e58c880b15128b239cef8c1ee0dd1ad9c6f48f11b2cf3b28506b7f7"
+    },
+    {
+      "id": "TH",
+      "slug": "thailand",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=thailand",
+      "file": "thailand.html",
+      "sha256": "140a53224cc32d33410e0cbc2f1051e2562220cb5ebb31753f1be9d7ee8babac"
+    },
+    {
+      "id": "TN",
+      "slug": "tunisia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=tunisia",
+      "file": "tunisia.html",
+      "sha256": "d86277426a276ab5b88cd132499af621a315624a0323a31900f6a040b421dfef"
+    },
+    {
+      "id": "TR",
+      "slug": "turkey",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=turkey",
+      "file": "turkey.html",
+      "sha256": "dd78b3c7744da13771cce7b51ca8d36a7717fc7d7985e1adf609d3f1ced1853e"
+    },
+    {
+      "id": "TM",
+      "slug": "turkmenistan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=turkmenistan",
+      "file": "turkmenistan.html",
+      "sha256": "3a75160496125cab2d2cc258448d3ca5e5779e4e27f1f0cb1cb6bbf88367ca2d"
+    },
+    {
+      "id": "UG",
+      "slug": "uganda",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=uganda",
+      "file": "uganda.html",
+      "sha256": "fe87202e250ce027c51f4c2fe35e0d1a8962528b40decefe79e98edc8440200d"
+    },
+    {
+      "id": "UA",
+      "slug": "ukraine",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=ukraine",
+      "file": "ukraine.html",
+      "sha256": "1462ee14707a8d12467fb81a2100b402a1e03540ec8147f63a11dabcbeb958c9"
+    },
+    {
+      "id": "AE",
+      "slug": "united-arab-emirates",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=united-arab-emirates",
+      "file": "united-arab-emirates.html",
+      "sha256": "dac3f975c6d02ac2a7b635f38d0388cc29e68f690801d8103ea388e6717cae54"
+    },
+    {
+      "id": "GB",
+      "slug": "united-kingdom",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=united-kingdom",
+      "file": "united-kingdom.html",
+      "sha256": "e5494f21951afb3cda1e0b6b1686ea6010c63fb4296c7f3d7b4614032b9ce92a"
+    },
+    {
+      "id": "US",
+      "slug": "united-states-of-america",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=united-states-of-america",
+      "file": "united-states-of-america.html",
+      "sha256": "24067bf1b4e2bc76b066952879e69cf06cedee396bb78a0fc2299242c763f422"
+    },
+    {
+      "id": "UY",
+      "slug": "uruguay",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=uruguay",
+      "file": "uruguay.html",
+      "sha256": "12e8a5874c6a60b675e3a2087714506b8283df6cff866f53cfc7730f35d6c2f0"
+    },
+    {
+      "id": "UZ",
+      "slug": "uzbekistan",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=uzbekistan",
+      "file": "uzbekistan.html",
+      "sha256": "b2c52cef2c781f6337ab50cd13d376eee6168a04c459dacd4d69984070f3fb24"
+    },
+    {
+      "id": "VE",
+      "slug": "venezuela",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=venezuela",
+      "file": "venezuela.html",
+      "sha256": "0c595ca7a218bd094ef97478ff897eb3eb94d7650070658dc52315e39536e6ae"
+    },
+    {
+      "id": "VN",
+      "slug": "vietnam",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=vietnam",
+      "file": "vietnam.html",
+      "sha256": "2a9a466ca2c19d8902ce749b3eba9a2f11cea801d2e4dbe9f3a2a7e55fae3132"
+    },
+    {
+      "id": "YE",
+      "slug": "yemen",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=yemen",
+      "file": "yemen.html",
+      "sha256": "8cc38e9d91023e55574c45b5a63311d12fb5ba6103ea73348420098d04cdb189"
+    },
+    {
+      "id": "ZM",
+      "slug": "zambia",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=zambia",
+      "file": "zambia.html",
+      "sha256": "f7de472aca4cd6a5ea2f0fb642d65d4361dcd382fb7314b9a49718a888372b7e"
+    },
+    {
+      "id": "ZW",
+      "slug": "zimbabwe",
+      "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=zimbabwe",
+      "file": "zimbabwe.html",
+      "sha256": "c613031062b151356c4db26957c86f14c6d529a6cc6be07d9c129b8e8852b22a"
+    }
+  ]
+}

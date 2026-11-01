@@ -62,9 +62,9 @@ export class WorldMap {
         #endif`);
       };
       const mesh=new THREE.Mesh(geometry,material);mesh.position.z=1.8;mesh.userData={id};
-      const side=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({color:0x030e1e,side:THREE.DoubleSide}));side.position.set(0,-3.5,-0.5);
+      const side=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({color:0x002042,side:THREE.DoubleSide}));side.position.set(0,-3.5,-0.5);
       const linesGeo=new THREE.BufferGeometry();linesGeo.setAttribute('position',new THREE.Float32BufferAttribute(contours,3));
-      const line=new THREE.LineSegments(linesGeo,new THREE.LineBasicMaterial({color:0x102b43,transparent:true,opacity:0}));
+      const line=new THREE.LineSegments(linesGeo,new THREE.LineBasicMaterial({color:0x1f4575,transparent:true,opacity:0}));
       this.root.add(side,mesh,line);this.hitTargets.push(mesh);
       const c=this.data.countries.find(c=>c.id===id);
       const position=this.projection(c.label);
@@ -83,8 +83,10 @@ export class WorldMap {
       const svg=loader.parse(`<svg xmlns="http://www.w3.org/2000/svg"><path d="${this.path(feature)}" fill="none" stroke="#fff"/></svg>`);
       for(const path of svg.paths)for(const subPath of path.subPaths){const ps=subPath.getPoints();for(let i=1;i<ps.length;i++)points.push(ps[i-1].x,ps[i-1].y,3,ps[i].x,ps[i].y,3);}
       const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(points,3));
-      const line=new THREE.LineSegments(geometry,new THREE.LineBasicMaterial({color:feature.properties.b?0x0c2030:0x294252,transparent:true,opacity:0.85}));
-      this.root.add(line);this.boundaries.push({...feature.properties,line});
+      const line=new THREE.LineSegments(geometry,new THREE.LineBasicMaterial({color:feature.properties.b?0x002042:0x4374A8,transparent:true,opacity:0.85}));
+      geometry.computeBoundingBox();
+      const center=geometry.boundingBox.getCenter(new THREE.Vector3());
+      this.root.add(line);this.boundaries.push({...feature.properties,line,center});
     }
     this.ready=true;
   }
@@ -96,14 +98,15 @@ export class WorldMap {
   }
   bind(){
     const el=this.renderer.domElement;let down=null;
-    el.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY,tx:this.target.x,ty:this.target.y,moved:false};el.setPointerCapture(e.pointerId);});
+    el.addEventListener('pointerdown',e=>{if(this.selecting)return;down={x:e.clientX,y:e.clientY,tx:this.target.x,ty:this.target.y,moved:false};el.setPointerCapture(e.pointerId);});
     el.addEventListener('pointermove',e=>{
+      if(this.selecting)return;
       if(down){const dx=e.clientX-down.x,dy=e.clientY-down.y;if(Math.abs(dx)+Math.abs(dy)>4)down.moved=true;const scale=(this.camera.right-this.camera.left)/el.clientWidth/this.target.zoom;this.target.x=down.tx-dx*scale;this.target.y=down.ty+dy*scale;return;}
       const id=this.pick(e);this.highlight(id);this.onHover(id,e);el.style.cursor=id?'pointer':'grab';
     });
-    el.addEventListener('pointerup',e=>{if(down&&!down.moved){const id=this.pick(e);if(id)this.onSelect(id);}down=null;});
+    el.addEventListener('pointerup',e=>{if(this.selecting){down=null;return;}if(down&&!down.moved){const id=this.pick(e);if(id)this.onSelect(id);}down=null;});
     el.addEventListener('pointercancel',()=>down=null);
-    el.addEventListener('pointerleave',()=>{this.highlight(null);this.onHover(null);});
+    el.addEventListener('pointerleave',()=>{if(!this.selecting){this.highlight(null);this.onHover(null);}});
     el.addEventListener('wheel',e=>{e.preventDefault();this.zoom(e.deltaY>0?0.9:1.1);},{passive:false});
     el.addEventListener('dblclick',()=>this.reset());
   }
@@ -114,9 +117,24 @@ export class WorldMap {
   }
   highlight(id){
     if(this.hover===id)return;
-    if(this.hover){const old=this.meshes.get(this.hover);if(old){old.line.material.color.setHex(0x102b43);old.line.material.opacity=0;old.line.position.z=0;old.mesh.material.color.setHex(0xc4d3df);}}
+    if(this.hover){const old=this.meshes.get(this.hover);if(old){old.line.material.color.setHex(0x1f4575);old.line.material.opacity=0;old.line.position.z=0;old.mesh.material.color.setHex(0xc4d3df);}}
     this.hover=id;
-    if(id){const m=this.meshes.get(id);m.line.material.color.setHex(0xc5f7da);m.line.material.opacity=1;m.line.position.z=3;m.mesh.material.color.setHex(0xffffff);}
+    if(id){const m=this.meshes.get(id);m.line.material.color.setHex(0xCCE5FF);m.line.material.opacity=1;m.line.position.z=3;m.mesh.material.color.setHex(0xffffff);}
+  }
+  clearSelection(){
+    for(const id of this.selectionIds??[]){const m=this.meshes.get(id);m.line.material.opacity=0;m.line.position.z=0;m.mesh.material.color.setHex(0xc4d3df);}
+    this.selectionIds=[];this.selectionId=null;
+  }
+  selectFaction(id,owners,stage){
+    this.selecting=true;this.clearBattle();this.highlight(null);this.clearSelection();this.selectionId=id;this.selectionStage=stage;
+    for(const [territory,m] of this.meshes){if(owners[territory]!==id)continue;this.selectionIds.push(territory);m.line.material.color.setHex(stage==='attacker'?0xCCE5FF:0x84AEDB);m.line.material.opacity=1;m.line.position.z=4;m.mesh.material.color.setHex(0xffffff);}
+  }
+  endSelection(){this.selecting=false;this.clearSelection();this.clearBattle();}
+  clearBattle(){for(const id of this.battleIds??[]){const m=this.meshes.get(id);if(m){m.line.material.opacity=0;m.mesh.material.color.setHex(0xc4d3df);}}this.battleIds=[];}
+  focusMatchup(attacker,defender,owners){
+    const boundary=this.boundaries.find(({a,b})=>b&&((owners[a]===attacker&&owners[b]===defender)||(owners[a]===defender&&owners[b]===attacker)));
+    if(boundary){this.target={x:boundary.center.x,y:boundary.center.y,zoom:3};}
+    else this.focus([attacker,defender]);
   }
   update(owners,animate=false,conquered=[]){
     if(!animate){this.effects=[];for(const m of this.meshes.values()){m.uniforms.conquestProgress.value=1;m.mesh.position.z=1.8;m.mesh.material.color.setHex(0xc4d3df);m.line.material.opacity=0;}}
@@ -133,7 +151,7 @@ export class WorldMap {
     const origins=[],velocity=[];
     for(const id of ids){const p=this.meshes.get(id).position;for(let i=0;i<7;i++){origins.push(p[0]+(Math.random()-.5)*12,p[1]+(Math.random()-.5)*12,6);velocity.push((Math.random()-.5)*35,Math.random()*40+15,0);}}
     const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(origins,3));
-    const object=new THREE.Points(geometry,new THREE.PointsMaterial({color:0x9affc0,size:3,transparent:true,opacity:0.9,depthTest:false}));this.root.add(object);this.particles.push({object,origins,velocity,start:performance.now()});
+    const object=new THREE.Points(geometry,new THREE.PointsMaterial({color:0x84AEDB,size:3,transparent:true,opacity:0.9,depthTest:false}));this.root.add(object);this.particles.push({object,origins,velocity,start:performance.now()});
   }
   focus(ids){
     const points=ids.map(id=>this.meshes.get(id)?.position).filter(Boolean);if(!points.length)return;
@@ -145,7 +163,7 @@ export class WorldMap {
   reset(){this.target={x:0,y:15,zoom:0.92};}
   zoom(factor){this.target.zoom=THREE.MathUtils.clamp(this.target.zoom*factor,0.65,9);}
   tilt(){this.tilted=!this.tilted;}
-  battle(a,b){for(const id of [a,b]){const m=this.meshes.get(id);if(m){m.line.material.color.setHex(id===a?0x75f2b0:0xffb868);m.line.material.opacity=1;m.mesh.material.color.setHex(0xffffff);}}}
+  battle(a,b){this.clearBattle();this.battleIds=[a,b];for(const id of [a,b]){const m=this.meshes.get(id);if(m){m.line.material.color.setHex(id===a?0xCCE5FF:0x4374A8);m.line.material.opacity=1;m.mesh.material.color.setHex(0xffffff);}}}
   animate(now){
     this.frame=requestAnimationFrame(this.animate);
     const dt=Math.min((now-this.last)/1000,0.1);this.last=now;const f=1-Math.exp(-dt*5);
@@ -156,8 +174,8 @@ export class WorldMap {
     this.effects=this.effects.filter(effect=>{
       const m=this.meshes.get(effect.id),t=(now-effect.start)/1000;
       m.uniforms.conquestProgress.value=Math.min(1,t/0.8);
-      if(t>1){m.mesh.position.z=1.8;m.mesh.material.color.setHex(0xc4d3df);m.line.material.color.setHex(0x102b43);m.line.material.opacity=0;return false;}
-      m.mesh.position.z=1.8+Math.sin(t*Math.PI)*8;m.mesh.material.color.setRGB(1,1,0.8+Math.sin(t*10)*0.2);m.line.material.color.setHex(0x8bffc3);m.line.material.opacity=1;return true;
+      if(t>1){m.mesh.position.z=1.8;m.mesh.material.color.setHex(0xc4d3df);m.line.material.color.setHex(0x1f4575);m.line.material.opacity=0;return false;}
+      m.mesh.position.z=1.8+Math.sin(t*Math.PI)*8;m.mesh.material.color.setRGB(0.65+Math.sin(t*10)*0.1,0.8,1);m.line.material.color.setHex(0x84AEDB);m.line.material.opacity=1;return true;
     });
     this.particles=this.particles.filter(p=>{
       const t=(now-p.start)/1000;if(t>1){this.root.remove(p.object);p.object.geometry.dispose();p.object.material.dispose();return false;}
