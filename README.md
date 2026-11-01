@@ -1,10 +1,12 @@
 # WORLD CONQUEST — DICE WAR
 
-Jogo de observação de conquista mundial para navegadores, em JavaScript ES6, Vite, Three.js, D3-geo e Turf. Contém exatamente **195 Estados**, geografia Natural Earth, bandeiras recortadas nos polígonos, dados populacionais reais, batalhas 3D6 e conquistas integrais de facções. Permite usar só população, só forças armadas ou combinar os dois índices.
+Jogo de observação de conquista mundial para navegadores, em JavaScript ES6, Vite, Three.js, D3-geo e Turf. Contém exatamente **195 Estados**, geografia Natural Earth, bandeiras recortadas nos polígonos, dados populacionais reais, batalhas 3D6 e conquistas integrais ou graduais, campanhas regionais e progressão local de torcida. Permite usar só população, só forças armadas ou combinar os dois índices.
 
-**Versão atual: 1.2.1.** Base local preparada em **1º de novembro de 2026**. Os anos de referência variam por fonte e estão indicados em cada registro.
+**Versão atual: 2.0.0.** Base local preparada em **1º de novembro de 2026**. Os anos de referência variam por fonte e estão indicados em cada registro.
 
 ## Recursos da versão atual
+
+Abra **Modos** para escolher a região e as regras. Abra **Torcida** para previsões, missões, álbum, medalhas, aparência e sala de troféus. O [plano de implementação](docs/IMPLEMENTATION_PLAN.md) registra as decisões desta versão.
 
 - Duas caixas de seleção para população e forças armadas. Marcar ambas combina os índices em partes iguais; sem nenhuma, o jogo bloqueia o início de uma nova partida.
 - Sorteio opcional no mapa: os destaques desaceleram até selecionar o atacante, a câmera se aproxima e a seleção continua apenas entre os inimigos conectados à sua fronteira.
@@ -53,18 +55,72 @@ npm run check       # validação dos dados + testes do motor + build
 npm run preview     # serve o build em localhost:4173
 ```
 
-`dist/` é a entrega estática completa. Não há servidor de aplicação, banco de dados remoto ou chaves de API. WebGL e LocalStorage são recursos de navegador utilizados; a exportação JSON permite copiar partidas entre dispositivos.
+`dist/` é a entrega estática completa. Não há servidor de aplicação, banco de dados remoto ou chaves de API. O jogo usa WebGL, LocalStorage e IndexedDB. A exportação JSON permite copiar a partida entre dispositivos; o perfil e o arquivo de troféus pertencem ao navegador.
 
 ## Jogar
 
 - Inicie no menu ou execute a próxima batalha. O jogador observa a simulação.
-- Controle a velocidade entre 0,5× e máxima. Jogar batalha e Próxima batalha executam uma rodada. Ative Seguir batalha para continuar automaticamente e desative para parar depois da batalha atual. Uma partida global tem exatamente 194 batalhas decisivas, além das rolagens de desempate.
+- Controle a velocidade entre 0,5× e máxima. Jogar batalha e Próxima batalha executam uma rodada. Ative Seguir batalha para continuar automaticamente e desative para parar depois da batalha atual. Uma partida clássica mundial tem exatamente 194 batalhas decisivas. Regiões, rei da colina, alianças, conquista gradual e rebeliões podem mudar esse número.
 - Arraste para mover o mapa; use scroll ou +/− para zoom. O botão do globo retorna à vista mundial; o losango inclina o plano. Há seleção ampliada de microestados e busca dos 195 nomes.
 - O painel de batalha mostra três dados por participante, bônus, totais, atacante, defensor, rota e vencedor. Nos detalhes, todas as rolagens de desempate ficam registradas.
 - Em Estatísticas, explore gráficos, selecione uma facção, exporte a partida ou reconstrua o mapa por rodada. Voltar à partida restaura o mapa atual.
-- A partida é salva automaticamente após cada batalha, pausa e saída da página. Continuar recupera o estado, incluindo gerador aleatório, histórico, facções e tempo. Importação fica em Configurações.
+- A partida é salva automaticamente após cada batalha, pausa e saída da página. Campanhas que excedem o espaço do LocalStorage usam IndexedDB com um ponteiro local; falhas de persistência aparecem na interface. Continuar recupera o estado, incluindo gerador aleatório, histórico, facções e tempo. Importação fica em Configurações.
 - Reiniciar e Repetir conservam seed **e regras da partida**. Nova simulação gera outra seed e usa as configurações selecionadas. Mudanças de regra de força/fronteiras/bônus/seed valem para a próxima partida.
 - Espaço inicia/pausa quando o foco não está em um controle. Há suporte a teclado, preferência por movimento reduzido e layout móvel. Em telas pequenas, o ranking também aparece em Estatísticas.
+
+## Modos e campanhas
+
+A seleção de países e as regras são combináveis. **Aplicar modos** prepara uma nova campanha, com prévia dos participantes e da população. Os demais Estados ficam apagados no mapa. Você pode dar nome a uma configuração e salvá-la para reutilizar.
+
+| Grupo | Opções |
+| --- | --- |
+| Continentes e Américas | Mundo inteiro, Américas, América do Norte (Canadá, EUA e México), América Central, Caribe, América do Sul, Europa, África, Ásia, Oceania |
+| Combinações | Eurásia, Afro-Eurásia |
+| Regiões | Mediterrâneo, Oriente Médio, Sudeste Asiático, África Subsaariana, Atlântico, Pacífico, nações insulares |
+| Personalizado | Seleção de pelo menos dois dos 195 Estados, com configuração salvável |
+
+As listas ISO ficam em `src/core/ModeCatalog.js`. Cada Estado participa por inteiro, com seu ultramar: Rússia e Chipre entram em Europa; Turquia e Cazaquistão entram em Ásia; Egito entra em África. Os recortes Atlântico/Pacífico e insulares são listas fixas de cenário, não uma classificação geopolítica universal; Austrália pertence à Oceania, mas não à lista insular.
+
+Ao recortar o mapa, algumas conexões usam países excluídos como trânsito. No modo global, corredores regionais ligam componentes isolados pelo caminho mais curto da rede geográfica original. São arestas fixadas na preparação do cenário, indicadas como **corredor regional**; os países intermediários não competem nem transferem população. O modo terrestre não adiciona corredores e pode terminar em impasse.
+
+### Regras especiais
+
+| Regra | Comportamento |
+| --- | --- |
+| País favorito | Escolha uma facção para acompanhar, com botão de câmera, avisos, missões e rivalidades. Não altera seus dados ou chances de vitória. |
+| Rei da colina | Uma facção escolhida, ou a de maior população, recebe territórios conectados até controlar aproximadamente 20% da região, arredondando para cima e preservando adversários. A expansão inicial não conta como vitória em batalha. |
+| Guerra de desgaste | Após cada duelo, efetivos e equipamentos simulados dos envolvidos mantêm 97% do valor anterior para o vencedor e 90% para o perdedor. O orçamento anual não é destruído; a população civil e os registros reais permanecem fixos. Com força apenas populacional, o desgaste não altera o bônus. |
+| Rebeliões | Depois de cada batalha há 3% de chance de um Estado eliminado recuperar apenas seu território original. A população e os recursos acompanham o território; nada é criado. A facção recupera sua associação original de aliança. |
+| Todos iguais | Cada lado recebe somente seus três D6, com bônus zero. Substitui os índices de população e forças armadas. |
+| Alianças | A seed define blocos fixos de até três Estados, com ao menos dois blocos em cenários pequenos. Aliados compartilham população e recursos para a força, não se atacam e não absorvem automaticamente conquistas uns dos outros. Vence o último bloco sobrevivente. |
+| Caça ao líder | O atacante continua uniforme entre elegíveis. Se o líder atual for um de seus inimigos conectados, tem peso quatro na escolha do defensor, contra peso um dos demais. |
+| Conquista gradual | Uma vitória toma um único território conectado pela fronteira elegível. O perdedor pode sobreviver, acumular derrotas e conservar outros territórios. A facção só é eliminada quando perde seu último Estado. |
+
+Campanhas avançadas têm limite padrão de **2.000 batalhas**, configurável entre 10 e 10.000. Se chegarem ao limite com várias facções, o jogo mostra os sobreviventes e identifica o limite; não anuncia que houve conquista completa. Vitórias por aliança e impasses também têm resultados próprios.
+
+O motor clássico usa saves v1; campanhas usam saves v2. Ambos carregam pela mesma interface. O replay reconstrói o mapa desde a configuração inicial, incluindo a vantagem do rei da colina e as rebeliões. A seed só reproduz a mesma campanha com a mesma região, regras, dados e demais configurações de simulação.
+
+## Torcida e progressão
+
+- **Previsões opcionais:** ative em Modos ou Torcida. Antes dos dados, escolha um participante ou pule. A sequência automática espera a escolha; desative previsões para assistir sem interrupções. Acerto rende 10 XP, mais três por ponto de desvantagem e até 10 por sequência. Errar zera a sequência e não retira XP.
+- **Missões:** acompanhar batalhas, acertar previsões e manter sequências; com favorito, sobreviver a ataques, expandir além da posição inicial e vencer o líder. Metas aplicáveis ao tamanho da região aparecem com progresso e recompensa.
+- **Medalhas:** primeiro palpite, sequência, azarão, rebelião, queda do rei, conquista mundial, vitória insular, vitória em aliança, recuperação do favorito, conquista gradual, desafio e campanhas concluídas. A recompensa de cada medalha é concedida uma vez por perfil.
+- **Álbum:** registra os 195 Estados conforme aparecem em duelos ou são consultados, com observações, títulos e recordes de expansão. Não modifica dados nacionais.
+- **Rivalidades:** guarda os encontros, vitórias e eliminações do favorito e avisa quando ele enfrenta novamente quem já o eliminou.
+- **Aparência:** a cada 100 XP o perfil sobe de nível. Desbloqueia dados de jade/gelo, moldura dupla, confetes de estrelas e interface noturna. Equipar muda só o visual.
+- **Desafios por seed:** três cenários fixam seed, região, força e regras, com meta de acertos. A campanha deve terminar em vitória para registrar o desafio; o perfil conserva os melhores resultados locais.
+- **Sala de troféus:** resumo de previsões, missões, XP, vencedor(es), duração e seed. O IndexedDB conserva os 12 arquivos completos mais recentes para consultar histórico, gráficos e mapa por rodada; o perfil mantém os 40 resumos mais recentes.
+
+Os pontos, recordes e cosméticos são locais. Não há contas, temporadas, classificação global ou prêmios financeiros. Limpar os dados do navegador remove o perfil e os arquivos. Exportar uma partida inclui sua sessão de torcida, mas não transfere o perfil completo entre dispositivos. O perfil evita conceder a mesma recompensa de evento novamente ao retomar uma sessão já contabilizada.
+
+Para verificar as funcionalidades novas com o Vite em execução:
+
+```sh
+GAME_URL=http://127.0.0.1:5173 node scripts/campaignSmoke.js
+GAME_URL=http://127.0.0.1:5173 node scripts/gamificationSmoke.js
+```
+
+O primeiro teste percorre recortes regionais e personalizados, previsões, retomada, troféus, arquivo por rodada, desafios e álbum móvel. O segundo verifica acertos, níveis, cosméticos, recordes e o fallback real de salvamento no IndexedDB.
 
 ## Regras determinísticas
 
@@ -85,7 +141,7 @@ O modo padrão continua sendo população. Escolha a regra no menu inicial ou em
 
 Cada participante rola exatamente três D6 independentes. Apenas quem tem maior força recebe `min(limite, força − forçaRival)` como bônus; o padrão é 12, configurável de 0 a 19. Empates rolam novamente os três dados de ambos os lados com os mesmos bônus, até haver vencedor. O histórico guarda todas essas tentativas.
 
-Quem vence absorve **todos** os territórios e toda a população da facção derrotada, inclusive quando vence o defensor. Cada Estado original tem exatamente um controlador. Não há crescimento demográfico, duplicação nem alteração da população inicial. Cada batalha elimina uma facção. O motor é síncrono e independente do renderizador: `new GameEngine(countries, borders, options).run()` termina sem DOM, WebGL ou animações.
+No clássico, quem vence absorve **todos** os territórios e toda a população da facção derrotada, inclusive quando vence o defensor. Cada Estado original tem exatamente um controlador. Não há crescimento demográfico, duplicação nem alteração da população inicial. No clássico, cada batalha elimina uma facção. O motor é síncrono e independente do renderizador: `new GameEngine(countries, borders, options).run()` termina sem DOM, WebGL ou animações.
 
 ## Dados e suas limitações
 
@@ -117,7 +173,7 @@ Os máximos nacionais são fixos no início. Os pesos permanecem fixos mesmo com
 
 **Ausência de informação é diferente de zero.** Há 21 Estados sem nenhuma das cinco medidas. Eles mostram “Não disponível”, e não um efetivo fictício. Quando um dos participantes não possui índice militar, ambos usam componente militar neutro 1 nessa batalha. Em forças armadas, nenhum dos lados recebe bônus militar. No combinado, somente a diferença populacional pode produzir vantagem, com metade do peso. O histórico registra essa condição. Depois de conquistar territórios com dados conhecidos, uma facção passa a ter um índice militar parcial calculável.
 
-Nas conquistas, os recursos publicados de todos os territórios são somados, sem perdas, produção de armas ou recrutamento. Não há duplicação de pessoal ou inventário. Totais mostram quantos Estados possuem observação e quais anos foram usados. Isso representa recursos controlados na simulação, não a capacidade atual de uma força real. Treinamento, prontidão, tecnologia específica dos equipamentos, alianças e armas nucleares ficam fora do modelo. O PowerIndex GFP é mostrado como referência do Estado original e não é somado ou convertido em chance de vitória.
+Sem guerra de desgaste, os recursos publicados dos territórios são somados sem perdas, produção de armas ou recrutamento. Com desgaste, os recursos simulados diminuem após cada duelo; os registros reais continuam imutáveis. Não há duplicação de pessoal ou inventário. Totais mostram quantos Estados possuem observação e quais anos foram usados. Isso representa recursos controlados na simulação, não a capacidade atual de uma força real. Treinamento, prontidão, tecnologia específica dos equipamentos e armas nucleares ficam fora do modelo. As alianças opcionais são uma regra de jogo e não representam alianças militares reais. O PowerIndex GFP é mostrado como referência do Estado original e não é somado ou convertido em chance de vitória.
 
 Para atualizar as fontes e preparar os dados:
 
@@ -197,9 +253,9 @@ public/data/         dados preparados, população, inventários, GeoJSON, rotas
 public/assets/       bandeiras e fonte locais com licenças
 scripts/raw/         snapshots originais auditáveis
 scripts/            download, preparação, validação, teste de navegador
-src/core/           RNG, população, forças armadas, batalha, território e GameEngine
+src/core/           motor clássico, campanhas, cenários, RNG, população, forças armadas
 src/graphics/       mapa Three.js, animação de dados e áudio Web Audio
-src/services/       carregamento e LocalStorage
+src/services/       carregamento, perfil, LocalStorage e arquivo IndexedDB
 src/ui/             ranking, histórico, país, batalha e gráficos SVG
 src/main.js         menus, controles e coordenação assíncrona
 src/styles/         identidade visual responsiva
@@ -210,11 +266,11 @@ Fases: `menu → paused/running → selection → bonus → battle → conquest 
 
 O mapa é um plano projetado, com malhas reais e texturas de baixa resolução por polígono; efeitos de profundidade, inclinação e câmera suave permanecem separados da cartografia. Um shader espalha a nova bandeira pelo território; o contorno pulsa e partículas quadradas sinalizam conquistas. As animações de dados usam perspectiva CSS. Texturas são compartilhadas entre todos os territórios controlados pela mesma facção. Qualidade automática limita resolução em dispositivos com pouca memória, e o modo econômico reduz partículas.
 
-Efeitos sonoros e música são sintetizados com Web Audio após interação do usuário; não usam mídia de terceiros. O histórico tem no máximo 194 eventos, com todas as tentativas de desempate. O log reconstrói estados anteriores sem duplicar snapshots completos.
+Efeitos sonoros e música são sintetizados com Web Audio após interação do usuário; não usam mídia de terceiros. O clássico mundial tem no máximo 194 eventos; campanhas avançadas respeitam um limite configurável de até 10.000 batalhas. Todas as tentativas de desempate ficam no histórico, cuja consulta é paginada. O log reconstrói estados anteriores sem duplicar snapshots completos.
 
 ## Testes
 
-Há 32 testes automatizados: 16 do motor e da base geográfica, dez dos dados e modos militares e seis da apresentação e seleção de força. Eles cobrem dados 3D6, bônus, desempates, seleção uniforme, vizinhos válidos, conquista pelo atacante/defensor, absorção múltipla, atualização de fronteiras, conservação de população, eliminação, fim global, impasse terrestre, seeds, snapshots e salvamento. A suíte inclui 30 seeds globais completas; a prévia do sorteio também é comparada à batalha efetiva sem consumir o RNG da partida.
+Há 49 testes automatizados: 16 do motor e da base geográfica, dez dos dados e modos militares, seis da apresentação e seleção de força, 11 de campanhas e seis de perfil e progressão. Eles cobrem dados 3D6, bônus, desempates, seleção uniforme, vizinhos válidos, conquista pelo atacante/defensor, absorção múltipla, atualização de fronteiras, conservação de população, eliminação, fim global, impasse terrestre, seeds, snapshots e salvamento. A suíte inclui 30 seeds globais completas; a prévia do sorteio também é comparada à batalha efetiva sem consumir o RNG da partida.
 
 Para o fluxo no Chromium, com o servidor de desenvolvimento em execução:
 
@@ -222,15 +278,11 @@ Para o fluxo no Chromium, com o servidor de desenvolvimento em execução:
 node scripts/browserSmoke.js
 ```
 
-O script usa `/usr/bin/chromium`, configurável por `CHROMIUM_PATH`; `GAME_URL` altera a URL. Verifica 195 malhas, execução manual e contínua, reload/continuar, seed, replay histórico, seleção do Vaticano, vitória global, impasse terrestre e viewport móvel. Capturas são gravadas em `test-results/`. O script depende do handle de QA disponível apenas no Vite de desenvolvimento. Para validar o artefato de produção, `scripts/productionSmoke.js` testa o fluxo pela interface, sem esse handle.
+O script usa `/usr/bin/chromium`, configurável por `CHROMIUM_PATH`; `GAME_URL` altera a URL. Verifica 195 malhas, execução manual e contínua, reload/continuar, seed, replay histórico, seleção do Vaticano, vitória global, impasse terrestre e viewport móvel. Capturas são gravadas em `test-results/`. O script depende do handle de QA disponível apenas no Vite de desenvolvimento. Para validar o artefato de produção, `scripts/productionSmoke.js` testa o fluxo pela interface, sem esse handle. Esse teste usa qualidade econômica e desliga somente a roleta do mapa para verificar bônus e seis dados animados em renderização por software; `scripts/presentationSmoke.js` verifica o sorteio separadamente.
 
-## Deploy estático
+## Publicação futura na Vercel
 
-**Vercel**: importe a pasta, selecione Vite, comando `npm run build`, saída `dist`. Não é necessário rewrite de SPA: o jogo usa uma única página sem rotas de servidor.
-
-**Netlify**: use `npm run build` e diretório `dist`; o arquivo `netlify.toml` já contém os valores.
-
-**Qualquer host estático**: publique o conteúdo de `dist/` após `npm ci && npm run build`. O build usa caminhos relativos e pode ser servido em subpastas. Configurações e salvamentos pertencem à origem do navegador, então uma troca de domínio exige exportar/importar o JSON da partida.
+A configuração `vercel.json` prepara um build estático com `npm run build` e saída `dist`. O deploy fica para uma etapa posterior; nenhuma publicação é necessária para desenvolver ou jogar localmente. Não há rotas de servidor nem rewrite de SPA.
 
 O jogo deixa de depender das APIs após a instalação/build. A primeira visita ainda requer baixar os arquivos do site; não há service worker de cache offline. O projeto não inclui multiplayer, dados demográficos ao vivo nem mapas de fronteiras legais em tempo real.
 

@@ -9,6 +9,11 @@ try{
   await page.goto(process.env.GAME_URL||'http://127.0.0.1:4173');
   await page.waitForSelector('#map-loading',{state:'detached',timeout:60000});
   if(process.env.POWER_MODE)await setPowerOptions(page,process.env.POWER_MODE);
+  // Exercise dice and bonus separately from the map roulette (covered by presentationSmoke).
+  await page.getByRole('button',{name:'Configurações',exact:true}).first().click();
+  await page.locator('[name="selectionAnimation"]').uncheck();
+  await page.locator('[name="quality"]').selectOption('low');
+  await page.getByRole('button',{name:'Salvar configurações'}).click();
   await page.locator('#speed').selectOption('0.5');await page.locator('[data-action="next"]').click();
   await page.waitForFunction(()=>document.querySelectorAll('.die.rolling').length===6);
   await page.waitForFunction(()=>!document.getElementById('next-button').disabled);

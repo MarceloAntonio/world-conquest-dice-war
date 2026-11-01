@@ -1,0 +1,47 @@
+import {chromium} from '@playwright/test';
+import fs from 'node:fs/promises';
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});
+const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+const assert=(c,m)=>{if(!c)throw Error(m);};
+const ready=()=>page.waitForFunction(()=>window.__game?.map.ready,{timeout:60000});
+try{
+  await fs.mkdir('test-results',{recursive:true});await page.goto(process.env.GAME_URL||'http://127.0.0.1:5180');await ready();
+  await page.locator('.modes-nav').click();await page.locator('[name="region"]').selectOption('southAmerica');
+  assert(await page.locator('#mode-preview-summary').innerText().then(t=>t.includes('12 Estados')),'Regional preview count');
+  await page.locator('[name="favoriteId"]').selectOption('BR');await page.locator('[name="rule-gradual"]').check();await page.locator('[name="rule-attrition"]').check();await page.locator('[name="rule-huntLeader"]').check();await page.locator('[name="predictions"]').check();
+  await page.screenshot({path:'test-results/campaign-modes-desktop.png'});await page.getByRole('button',{name:'Aplicar modos'}).click();
+  assert(await page.evaluate(()=>window.__game.engine.countries.length)===12,'Scoped engine');
+  assert(await page.evaluate(()=>window.__game.map.participants.size)===12,'Map dims excluded states');
+  await page.locator('#speed').selectOption('max');await page.locator('#next-button').click();await page.waitForSelector('[data-presentation="prediction"]');
+  assert(await page.evaluate(()=>window.__game.engine.round)===0,'No dice before prediction');
+  await page.screenshot({path:'test-results/campaign-prediction.png'});
+  await page.locator('[data-action="predict"]').first().click();await page.waitForFunction(()=>window.__game.engine.round===1&&!window.__game.busy);
+  assert(await page.evaluate(()=>window.__game.profile.data.predictions)===1,'Prediction recorded');
+  await page.reload();await ready();await page.locator('#continue-menu').click();
+  assert(await page.evaluate(()=>window.__game.engine.options.rules.gradual&&window.__game.engine.round===1),'Campaign restore');
+  await page.locator('.profile-nav').click();await page.locator('#profile-predictions').uncheck();
+  await page.screenshot({path:'test-results/campaign-profile.png'});await page.getByRole('button',{name:'Fechar',exact:true}).click();
+  await page.locator('#follow-button').click();await page.waitForSelector('.victory',{timeout:60000});
+  await page.waitForFunction(()=>window.__game.profile.data.trophies.length>0);
+  assert(await page.locator('.campaign-summary').count()===1,'Actual campaign summary');
+  await page.screenshot({path:'test-results/campaign-result.png'});
+  await page.getByRole('button',{name:'Sala de troféus',exact:true}).click();await page.locator('[data-action="open-trophy"]').first().click();
+  await page.waitForSelector('[data-action="trophy-map"]');await page.locator('[data-action="trophy-map"]').click();
+  await page.locator('#replay-round').fill('0');await page.locator('#replay-round').dispatchEvent('input');
+  assert(await page.evaluate(()=>new Set([...window.__game.map.meshes.values()].filter(m=>window.__game.map.participants.has(m.mesh.userData.id)).map(m=>m.owner)).size)===12,'Archived map round zero');
+  await page.getByRole('button',{name:'Voltar à partida'}).click();
+  await page.locator('.modes-nav').click();await page.locator('[name="region"]').selectOption('custom');
+  for(const id of ['BR','JP','VA'])await page.locator(`[name="customIds"][value="${id}"]`).check();
+  await page.locator('[name="favoriteId"]').selectOption('');await page.locator('[name="customModeName"]').fill('Três bandeiras');await page.locator('[data-action="save-custom-mode"]').click();
+  assert(await page.evaluate(()=>window.__game.profile.data.customModes.length)===1,'Custom configuration saved');
+  await page.getByRole('button',{name:'Aplicar modos'}).click();assert(await page.evaluate(()=>window.__game.engine.countries.length)===3,'Custom subset applied');
+  await page.locator('.modes-nav').click();await page.locator('[data-action="choose-challenge"][data-id="ocean-coalitions"]').click();
+  assert(await page.evaluate(()=>window.__game.engine.options.challengeId)==='ocean-coalitions','Fixed challenge selected');
+  assert(await page.evaluate(()=>window.__game.engine.options.rules.alliances),'Alliance rule');
+  await page.setViewportSize({width:390,height:844});await page.locator('.profile-nav').click();await page.locator('[data-action="profile-tab"][data-tab="album"]').click();
+  assert(await page.locator('.flag-album>button').count()===195,'Collectible album');await page.screenshot({path:'test-results/campaign-album-mobile.png'});
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Mobile width');
+  assert(!errors.length,errors.join('; '));console.log(JSON.stringify({regions:true,customModes:true,preview:true,predictions:true,profile:true,campaignRestore:true,trophies:true,archivedReplay:true,challenges:true,album:true,mobile:true,errors},null,2));
+}catch(error){console.error('Browser errors:',errors);await page.screenshot({path:'test-results/campaign-failure.png'}).catch(()=>{});throw error;}
+finally{await browser.close();}
