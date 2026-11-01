@@ -1,0 +1,27 @@
+{
+  "name": "world-conquest-dice-war",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "data:prepare": "node scripts/prepareData.js",
+    "data:validate": "node scripts/validateData.js",
+    "test": "node --test tests/*.test.js",
+    "check": "npm run data:validate && npm test && npm run build"
+  },
+  "dependencies": {
+    "@turf/turf": "^7.3.0",
+    "d3-geo": "^3.1.1",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7",
+    "flag-icons": "^7.5.0",
+    "topojson-client": "^3.1.0",
+    "topojson-server": "^3.0.1",
+    "@playwright/test": "^1.56.0"
+  }
+}

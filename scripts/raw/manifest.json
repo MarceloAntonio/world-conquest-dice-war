@@ -1,0 +1,14 @@
+[
+  {
+    "name": "natural-earth.raw.geojson",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson",
+    "downloadedAt": "2026-11-01",
+    "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255"
+  },
+  {
+    "name": "worldbank.raw.json",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&date=2020:2025&per_page=20000",
+    "downloadedAt": "2026-11-01",
+    "sha256": "cacb5039f5331e85bfed35be5c4594d3e43674fd57cbb0128f39f212e7f2644b"
+  }
+]
